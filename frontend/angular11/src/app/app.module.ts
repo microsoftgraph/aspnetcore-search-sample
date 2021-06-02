@@ -58,9 +58,9 @@ export function MSALInstanceFactory(): IPublicClientApplication {
  // var secret
   return new PublicClientApplication({
     auth: {
-      clientId: 'de8bc8b5-d9f9-48b1-a8ad-b748da725064', // your application id, (this for graph-explorer)
+      clientId: '6226576d-37e9-49eb-b201-ec1eeb0029b6', // your application id, (this for graph-explorer)
       authority: `https://login.microsoftonline.com/common`, 
-      redirectUri: 'https://developer.microsoft.com/en-us/graph/graph-explorer', // configurated in you application, (this for graph-explorer)
+      redirectUri: 'http://localhost:4200', 
       postLogoutRedirectUri: '/'
     },
     cache: {

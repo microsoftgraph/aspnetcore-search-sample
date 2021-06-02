@@ -76,10 +76,8 @@ var template = new ACData.Template(templatePayload);
 
 // Expand the template with your `$root` data object.
 // This binds it to the data and produces the final Adaptive Card payload
-
-var context = {
-    $root : hit.resource
-}
+var context = new ACData.EvaluationContext();
+context.$root = hit.resource;
 var card = template.expand(context);
 
 // OPTIONAL: Render the card (requires that the adaptivecards library be loaded)
@@ -194,7 +192,7 @@ return this.sanitizer.bypassSecurityTrustHtml(adaptiveCard.render().outerHTML);
                       "displayName": "Liquid-3",
                       "body": {
                           "type": "AdaptiveCard",
-                          "version": "1.3",
+                          "version": "1.0",
                           "body": [
                               {
                                   "type": "ColumnSet",
@@ -218,7 +216,7 @@ return this.sanitizer.bypassSecurityTrustHtml(adaptiveCard.render().outerHTML);
                                           "items": [
                                               {
                                                   "type": "TextBlock",
-                                                  "text": "[${Title}](${URL})",
+                                                  "text": "[{Title}]({URL})",
                                                   "weight": "Bolder",
                                                   "color": "Accent",
                                                   "size": "Medium",
@@ -226,7 +224,7 @@ return this.sanitizer.bypassSecurityTrustHtml(adaptiveCard.render().outerHTML);
                                               },
                                               {
                                                   "type": "TextBlock",
-                                                  "text": "${ResultSnippet}",
+                                                  "text": "{ResultSnippet}",
                                                   "maxLines": 3,
                                                   "wrap": true
                                               }
